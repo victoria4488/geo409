@@ -114,11 +114,15 @@
                         "<b>" + "New Castle" + "</b><br>"
                             +"<b>population</b>: "+ console.log(cityPops[2]);
 
-            if(/* add code here */ == true) {
+            if( var capital [] == true) {
                
-                popup += "<br>Capitol of the Commonwealth of Kentucky"; 
+                popup += "<br>Capital of the Commonwealth of Kentucky"; 
                 
-            } 
+            } else {
+                
+                popup += "<br>Not the Capital City of Kentucky";
+                
+            }
             
             L.marker(cityCoords[i]).addTo(map)
                 .bindPopup(popup);
