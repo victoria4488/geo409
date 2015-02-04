@@ -88,33 +88,24 @@
         // 
         var cities = ["Frankfurt", "Lexington","New Castle"];
         console.log(cities);
-        
-        var cityCoords = ["38.1970, -84.8630" , "38.0489, -84.5025" , "38.4336, -85.1694"];
-        console.log(Coords);
+        // don't use quotes if you define an Array of Numbers
+        var cityCoords = [[38.1970, -84.8630] , [38.0489, -84.5025] , [38.4336, -85.1694]];
+        console.log(cityCoords);
         
         var cityPops = ["27453" , "308428" , "916"];
-        console.log(Pops);
+        console.log(cityPops);
         
-        var capital = [ "Lexington", false];
-        console.log(captial);
-        var capital = [ "Frankfort", true];
+        // here you want to define the capital array in the same way as you did with coords and pops
+        
+        var capital = [true, false, false];
         console.log(capital);
-        var capital = [ "New Castle", false];
-        
-        
-        
-        
 
         for(var i = 0; i < cities.length; i++) {
             
-            var popup = "<b>"+ "Frankfurt" +"</b><br>"
-                            +"<b>population</b>: "+ console.log(cityPops[0]);
-                        "<b>" + "Lexington" + "</b><br>"
-                            +"<b>population</b>: "+ console.log(cityPops[1]);
-                        "<b>" + "New Castle" + "</b><br>"
-                            +"<b>population</b>: "+ console.log(cityPops[2]);
-
-            if( var capital [] == true) {
+            var popup = "<b>"+cities[i]+"</b><br>"
+                            +"<b>population</b>: "+cityPops[i];
+            
+            if(capital[i] == true) {
                
                 popup += "<br>Capital of the Commonwealth of Kentucky"; 
                 
