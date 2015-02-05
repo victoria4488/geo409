@@ -104,16 +104,14 @@
             
             var cityAreas = [lexArea, florArea, louArea]; 
                     
+             };
+            
+        function mapCities(cities, cityCoords) { 
             mapCities(cities, cityCoords);{
                 var mapCities(cities[0], cityCoords[0])
                 var mapCities(cities[1], cityCoords[1])
                 var mapCities(cities[2], cityCoords[2])
-                
-            
-        };
-            
-        function mapCities(cities, cityCoords) { /* include 2 more parameters here */
-            
+            };
             var units = 'miles';
             
             for(var i = 0; i < cities.length; i++) {
@@ -121,17 +119,27 @@
                                  the city population, area, and units as arguments, and assign
                                  return value to the "density" variable */
                 var popup = "<b>"+cities[i]+"</b><br>"
-                                //+"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
+                                +"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
                 L.marker(cityCoords[i]).addTo(map)
                     .bindPopup(popup);
                 
             }
         }
         
-        // write a function named calcPopDensity which accepts three arguments from the caller, the  
-        // population and the area of a single city, as well as the unites ('miles' or 'km'). 
-        // The function should calculate the density of the city with these two values and 
-        // return the result to the caller 
+            function calcPopDensity(population, area, units)
+                calcPopDensity();      {
+                var density= ( population / area )
+                if (units="km")
+                    density = density * 1.6 
+                    return density
+                    console.log(density, "km")
+                else (units="miles)
+                    return density
+                    console.log(density,"miles") 
+                
+                    };
+                    
+        
         
         // end writing/editing Task E code here
           
