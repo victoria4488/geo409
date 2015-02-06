@@ -45,7 +45,6 @@
             color: #001323;
         }
         /* Additional style rules go here! */
-        
     </style>
 </head>
 
@@ -60,7 +59,7 @@
     <footer>
         <p>Map authored by Victoria Anderson</p>
         <p>Additional information about the data and map goes here.</p>
-        <p>The entire time I was coding, I was listening to Cherub on Pandora. 
+        <p>The entire time I was coding, I was listening to Cherub on Pandora.
         </p>
     </footer>
 
@@ -68,7 +67,7 @@
         var map;
         var targetDiv = 'map';
         var options = {
-            center: [38.0489,-84.5025],
+            center: [38.0489, -84.5025],
             zoom: 8
         }
         map = L.map(targetDiv, options);
@@ -79,70 +78,65 @@
             maxZoom: 18
         });
         map.addLayer(tiles);
-        
-        // begin writing/editing Task E code here
-        
+
+         // begin writing/editing Task E code here
+
         var lexArea = 285.5;
         var florArea = 10.3;
         var louArea = 399;
-        
-        
-        
-        function prepareData[lexArea , florArea , louArea] { 
-            console.log[];
-            
-        
-            
-            var cities = ["Lexington","Florence","Louisville"]; 
+
+        prepareData(lexArea, florArea, louArea);
+
+        function prepareData(lexArea, florArea, louArea) {
+            // remember, console.log() uses parentheses. square brackets are for Arrays/Objects
+            console.log(lexArea);
+
+
+
+            var cities = ["Lexington", "Florence", "Louisville"];
             var cityCoords = [
-                [38.0297, -84.4947] 
-                [38.9933, -84.6425]
+                [38.0297, -84.4947],
+                [38.9933, -84.6425],
                 [38.2500, -85.7667]
-                
+
             ];
-            var cityPops = [308428, 31423, 253128]; 
-            
-            var cityAreas = [lexArea, florArea, louArea]; 
-                    
-             };
-            
-        function mapCities(cities, cityCoords) { 
-            mapCities(cities, cityCoords);{
-                var mapCities(cities[0], cityCoords[0])
-                var mapCities(cities[1], cityCoords[1])
-                var mapCities(cities[2], cityCoords[2])
-            };
-            var units = 'miles';
-            
-            for(var i = 0; i < cities.length; i++) {
-                var density =  calcPopDensity(cityPops, cityAreas, units);
-                var popup = "<b>"+cities[i]+"</b><br>"
-                                +"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
+            var cityPops = [308428, 31423, 253128];
+
+            var cityAreas = [lexArea, florArea, louArea];
+
+            // call mapCities here with appropriate parameters
+            mapCities(cities, cityCoords, cityPops, cityAreas)
+
+        };
+
+        function mapCities(cities, cityCoords, cityPops, cityAreas) {
+
+            var units = 'km';
+
+            for (var i = 0; i < cities.length; i++) {
+                console.log(cities[i])
+                var density = calcPopDensity(cityPops[i], cityAreas[i], units);
+                var popup = "<b>" + cities[i] + "</b><br>" + "<b>Density</b>: " + density.toLocaleString() + " people per sq " + units;
                 L.marker(cityCoords[i]).addTo(map)
                     .bindPopup(popup);
-                
+
+            }
+        }
+
+        function calcPopDensity(population, area, units) {
+            // don't call a function from within itself
+
+            //remember to use curly braces to enclose the code block that needs to run when an 'if' statements is true
+            if (units == "km") { // double the equal sign if you want to compare. a single `=` is for assigning to a variable
+                return population/(area * 1.60934 * 1.60934);
+            } else if (units == "miles") {
+                return population/area
             }
         }
         
-            function calcPopDensity(population, area, units)
-                calcPopDensity();      {
-                var density= ( population / area )
-                if (units="km")
-                    density = density * 1.6 
-                    return density
-                    console.log(density, "km")
-                else (units="miles)
-                    return density
-                    console.log(density,"miles") 
-                
-                    };
-                    
-        
-        
         // end writing/editing Task E code here
-          
     </script>
-    
+
 </body>
 
 </html>
