@@ -117,17 +117,15 @@
              }
                 
        ];
-        
-        for(var key in cities) {
-            console.log(key);
-            console.log(cities[key]);
-        }
-        
-        var props = cities[i].properties;
-        
-        console.log(props)
+        for(var i = 0; i < cities.length; i++){
+              
+            var props = cities[i].properties;
             
-        // End code for Task F
+            var popup = buildPopup(cities[i].name, props.population, props.state);
+            L.marker(props.coordinates).addTo(map)
+            .bindPopup(popup); 
+        
+        };
         
           
     </script>
