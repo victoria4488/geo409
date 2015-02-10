@@ -58,7 +58,7 @@
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by Victoria Anderson</p>
+        <p>Map authored by VICTORIA ANDERSON</p>
         <p>Additional information about the data and map goes here.</p>
         <p>The entire time I was coding, I was listening to Cherub on Pandora.
         </p>
@@ -89,7 +89,7 @@
         prepareData(lexArea, florArea, louArea);
 
         function prepareData(lexArea, florArea, louArea) {
-            // remember, console.log() uses parentheses. square brackets are for Arrays/Objects
+            
             console.log(lexArea);
 
         
@@ -123,15 +123,11 @@
                 
             }
         }
-        // need to switch square miles to square km. different variable. 
-            
        
 
         function calcPopDensity(population, area, units) {
-            // don't call a function from within itself
-
-            //remember to use curly braces to enclose the code block that needs to run when an 'if' statements is true
-            if (units == "km") { // double the equal sign if you want to compare. a single `=` is for assigning to a variable
+            
+            if (units == "km") { 
                 return population/(area * 1.60934 * 1.60934);
             } else if (units == "miles") {
                 return population/area}
