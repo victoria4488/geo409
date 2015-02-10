@@ -104,7 +104,7 @@
                 properties: {
                     coordinates: [ 39.1000, -84.5167],
                     population: 27453,
-                    state: "KY"
+                    state: "OH"
                  }
              },
              {
@@ -112,11 +112,13 @@
                 properties: {
                     coordinates: [ 39.7686, -86.1598],
                     population: 308428,
-                    state: "KY"
+                    state: "IN"
                 }
              }
                 
-       ];
+        ];
+       
+        
         for(var i = 0; i < cities.length; i++){
               
             var props = cities[i].properties;
@@ -126,6 +128,29 @@
             .bindPopup(popup); 
         
         };
+        
+        
+        function buildPopup(name, pop, state){
+            console.log(name, pop, state);
+            
+            if (state == "OH") {
+                var colorClass = "red";
+              // because driving through Ohio is the devil.
+            }
+            else if (state == "KY" ) {
+                var colorClass = "blue";
+              // bleed blue!!
+            }
+            else if (state == "IN") {
+                var colorClass = "yellow";
+              // they grow a lot of corn?
+            }
+            
+            return  "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
+                    "<b>Population</b>: "+pop.toLocaleString()+"<div>";
+        };
+        
+        
         
           
     </script>
