@@ -133,21 +133,27 @@
         function buildPopup(name, pop, state){
             console.log(name, pop, state);
             
-            if (state == "OH") {
-                var colorClass = "red";
+            if (state = "OH") {
+                var colorClass = "#f00";
               // because driving through Ohio is the devil.
-            }
-            else if (state == "KY" ) {
-                var colorClass = "blue";
-              // bleed blue!!
-            }
-            else if (state == "IN") {
-                var colorClass = "yellow";
-              // they grow a lot of corn?
+                return  "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
+                    "<b>Population</b>: "+pop.toLocaleString()+"<div>";
             }
             
-            return  "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
+            else if (state = "KY" ) {
+                var colorClass = "#1010f2";
+              // bleed blue!!
+                return  "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
                     "<b>Population</b>: "+pop.toLocaleString()+"<div>";
+            }
+            else if (state = "IN") {
+                var colorClass = "#ffff08";
+              // they grow a lot of corn?
+                return  "<div class='"+colorClass+"'><b>"+name+"</b><br>"+
+                    "<b>Population</b>: "+pop.toLocaleString()+"<div>";
+            }
+            
+            
         };
         
         
