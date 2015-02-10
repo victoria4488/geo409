@@ -60,7 +60,7 @@
     <footer>
         <p>Map authored by Victoria Anderson</p>
         <p>Additional information about the data and map goes here.</p>
-        <p>The entire time I was coding, I was listening to Cherub on Pandora. 
+        <p>The entire time I was coding, I was listening to Cherub on Pandora.
         </p>
     </footer>
 
@@ -100,24 +100,23 @@
                 [38.2500, -85.7667]
                 
             ];
-            var cityPops = [308428, 31423, 253128]; 
+            var cityPops = [308428, 31423, 253128];
+
+            var cityAreas = [lexArea, florArea, louArea];
+
             
-            var cityAreas = [lexArea, florArea, louArea]; 
-                    
-             };
-            
-        function mapCities(cities, cityCoords) { 
-            mapCities(cities, cityCoords);{
-                var mapCities(cities[0], cityCoords[0])
-                var mapCities(cities[1], cityCoords[1])
-                var mapCities(cities[2], cityCoords[2])
-            };
-            var units = 'miles';
-            
-            for(var i = 0; i < cities.length; i++) {
-                var density =  calcPopDensity(cityPops, cityAreas, units);
-                var popup = "<b>"+cities[i]+"</b><br>"
-                                +"<b>Density</b>: "+density.toLocaleString()+" people per sq " + units;
+            mapCities(cities, cityCoords, cityPops, cityAreas)
+
+        };
+
+        function mapCities(cities, cityCoords, cityPops, cityAreas) {
+
+            var units = 'km';
+
+            for (var i = 0; i < cities.length; i++) {
+                console.log(cities[i])
+                var density = calcPopDensity(cityPops[i], cityAreas[i], units);
+                var popup = "<b>" + cities[i] + "</b><br>" + "<b>Density</b>: " + density.toLocaleString() + " people per sq " units;
                 L.marker(cityCoords[i]).addTo(map)
                     .bindPopup(popup);
                 
