@@ -123,19 +123,21 @@
             }
         }
         // need to switch square miles to square km. different variable. 
-            function calcPopDensity(population, area, units)
-                calcPopDensity();      {
-                var density= ( population / area )
-                if (units="km")
-                    density = density * 1.6 
-                    return density
-                    console.log(density, "km")
-                else (units="miles")
-                    return density
-                    console.log(density,"miles") 
-                
-                    }
-                    
+            }
+       }
+
+        function calcPopDensity(population, area, units) {
+            // don't call a function from within itself
+
+            //remember to use curly braces to enclose the code block that needs to run when an 'if' statements is true
+            if (units == "km") { // double the equal sign if you want to compare. a single `=` is for assigning to a variable
+                return population/(area * 1.60934 * 1.60934);
+            } else if (units == "miles") {
+                return population/area}
+            
+        };
+
+
         
         
         // end writing/editing Task E code here
