@@ -15,9 +15,9 @@
         body {
             margin: 0;
             padding: 0;
-            background: whitesmoke;
+            background: #50826e;
             font-family: Lato, sans-serif;
-            color: #0D0000;
+            color: #afb9ba;
         }
         header {
             padding: 6px 10%;
@@ -25,7 +25,7 @@
         h1 {
             display: inline-block;
             margin-right: 20px;
-            color: #001323;
+            color: #afb9ba;
         }
         h2 {
             display: inline-block;
@@ -51,30 +51,61 @@
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>Iguana Bar Hopping</h1>
+        <h2>Dont try this at home.</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
-        <p>Map authored by YOUR NAME</p>
+        <p>Map authored by Victoria Anderson</p>
         <p>Additional information about the data and map goes here.</p>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
         </p>
     </footer>
 
     <script>
-    var map = L.map('map', {
+    var map = L.map('map', { 
+	
         center: [40,-94],
         zoom: 4
+        
     });
+        
+	
+	var Hydda_Base = L.tileLayer('http://{s}.tile.openstreetmap.se/hydda/base/{z}/{x}/{y}.png', {
+	minZoom: 4,
+	maxZoom: 12,
+	attribution: 'Tiles courtesy of <a href="http://openstreetmap.se/" target="_blank">OpenStreetMap Sweden</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+});
+	
+   
+    
                 
+    map.addLayer(Hydda_Base);
     var redIguana = L.latLng(40.7718,-111.9124);
+    var popup = "Two Keys";
+    L.marker(redIguana).addTo(map).bindPopup(popup);
         
     map.on('click', function(e){
-        console.log(e.latlng);   
+        console.log(e.latlng); 
+        var center = map.getCenter();
+        console.log(center);
+        var distance = center.distanceTo(redIguana);
+        console.log(distance);
+        var bounds = map.getBounds();
+        var southwest = bounds._southWest;
+        console.log(southwest);
+        var distance2 = southwest.distanceTo(redIguana);
+        console.log(distance2);
+        
+    
+    
+    
+    
     });
+        
+        
                   
     </script>
     
