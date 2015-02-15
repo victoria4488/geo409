@@ -89,19 +89,23 @@
         
         console.log(e.latlng); 
         
-        var center = map.getCenter();
-        console.log(center);
+        var center = map.getCenter(); // don't user center but the actual click coords
+        //console.log(center); 
         
-        var distance1 = center.distanceTo(redIguana);
-        console.log(distance1);
+        var clickCoords = e.latlng
+        var distance1 = clickCoords.distanceTo(redIguana);
+        console.log("Distance to Red Iguana is " + distance1 + " meters from click");
+        
+        // optional: set map to center on click
+        map.setView(clickCoords, 6)
         
         var bounds = map.getBounds();
         
-        var SW = bounds._southWest;
-        console.log(SW);
+        var SW = bounds.getSouthWest(); // don't use underscore properties
+        //console.log(SW);
         
-        var distance2 = southwest.distanceTo(redIguana);
-        console.log(distance2);
+        var distance2 = SW.distanceTo(redIguana);
+        console.log("Distance to Red Iguana is " + distance2 + " meters from SW corner of map");
         
     
     
