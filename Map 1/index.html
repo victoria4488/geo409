@@ -230,11 +230,11 @@
             marker = L.marker((clickedPoint), {icon: flagIcon}).addTo(map);
             marker.safeDistance = true;
             
-        testDistance(clickPoint);   
+        testDistance(clickedPoint);   
             
         }); 
         
-       function testDistance(clickPoint) {  
+       function testDistance(clickedPoint) {  
             
             circleGroup.eachLayer(function(layer) { 
                 
@@ -244,7 +244,7 @@
                 var center = layer.getLatLng();
                     console.log(center);
                 
-                var firstDistance = center.distanceTo(clickPoint);
+                var firstDistance = center.distanceTo(clickedPoint);
                     console.log(firstDistance);
                 
                 var realDistance = (firstDistance - radius);
