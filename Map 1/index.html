@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset=utf-8 />
+    <title>Hide Your Kids, Hide Your Wife.</title>
+    <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+    <script src="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: #ad9b8b;
+            font-family: Lato, sans-serif;
+            color: #0D0000;
+        }
+        header {
+            padding: 6px 10%;
+        }
+        h1 {
+            display: inline-block;
+            margin-right: 20px;
+            color: #001323;
+            text-align: center;
+        }
+        h2 {
+            display: inline-block;
+            color: #001323;
+            font-size: 1em;
+        }
+        #map {
+            width: 80%;
+            height: 540px;
+            margin: 10px auto;
+        }
+        footer {
+            padding: 6px 10%;
+            width: 80%;
+        }
+        p {
+            font-size: 1em;
+            color: #001323;
+            margin: 0;
+        }
+        p.author-info {
+            font-style: italic;
+            text-align: right;
+            font-size: 0.9em;
+        }
+        /* Additional style rules go here! */
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Iguana Alien Invasion Crisis.</h1>
+        <p><h2>With a tounge range of 2,200 meters, Alien Iguanas are not something people attending the Runaway Country Music Festival would like to come into contact with. Lord Mayor Doyle has called for a state of emergancy because he knows just how terrible these creatures can be. In this map, the Iguana landing zones are displayed as red circles (of death) with different sizes varying on the landing party size. Find your locations on the mpa and click. A flag marker will appear and determine if you are outside of the 2,200 meter danger zone of each landing spot. Stay safe my fellow country music lovers.  </h2></p>
+    </header>
+
+    <div id='map'></div>
+    
+    <footer>
+        <p class='author-info'>Map authored by Victoria Anderson.</p>
+    </footer>
+
+    <script>
+    var map = L.map('map', {
+        center: [-37.8136, 144.9631],
+        zoom: 11
+    });
+        
+    var getBounds = map.getBounds();
+        console.log(getBounds);
+          
+    var bounds = L.latLngBounds(getBounds);    
+        
+        map.setMaxBounds(bounds);
+        
+        
+    var Esri_NatGeoWorldMap = L.tileLayer('http://server.arcgisonline.com/ArcGIS/rest/services/NatGeo_World_Map/MapServer/tile/{z}/{y}/{x}', {
+        attribution: 'Tiles &copy; Esri &mdash; National Geographic, Esri, DeLorme, NAVTEQ, UNEP-WCMC, USGS, NASA, ESA, METI, NRCAN, GEBCO, NOAA, iPC',
+	    maxZoom: 16
+});
+
+        
+    map.addLayer(Esri_NatGeoWorldMap); 
+          
+        
+        var iguanaZones = [
+            {
+                name: 'lz1',
+                coordinates: [-37.854506, 144.797431],
+                properties: {
+                    size: 1850
+                }
+            },
+            {
+                name: 'lz2',
+                coordinates: [-37.749253, 144.855108],
+                properties: {
+                    size: 2500
+                }
+            },
+            {
+                name: 'lz3',
+                coordinates: [-37.770967, 144.943686],
+                properties: {
+                    size: 2150
+                }
+            },
+            {
+                name: 'lz4',
+                coordinates: [-37.720472, 145.002051],
+                properties: {
+                    size: 2000
+                }
+            },
+            {
+                name: 'lz5',
+                coordinates: [-37.774767, 145.033635],
+                properties: {
+                    size: 2500
+                }
+            },
+            {
+                name: 'lz6',
+                coordinates: [-37.827394, 145.040503],
+                properties: {
+                    size: 2350
+                }
+            },
+            {
+                name: 'lz7',
+                coordinates: [-37.767711, 145.116720],
+                properties: {
+                    size: 1100
+                }
+            },
+            {
+                name: 'lz8',
+                coordinates: [-37.829563, 145.129767],
+                properties: {
+                    size: 1450
+                }
+            },
+            {
+                name: 'lz9',
+                coordinates: [-37.779108, 145.749365],
+                properties: {
+                    size: 950
+                }
+            },
+            {
+                name: 'lz10',
+                coordinates: [-37.868059, 145.0714022],
+                properties: {
+                    size: 2000
+                }
+            },
+            {
+                name: 'lz11',
+                coordinates: [-37.932565, 145.080328],
+                properties: {
+                    size: 1700
+                }
+            },
+            {
+                name: 'lz12',
+                coordinates: [-37.873479, 145.1963717],
+                properties: {
+                    size: 1200
+                }
+            }
+        ]; // end iguanaShips data
+        
+             
+    var defaultCircle = {
+        color: 'rgba(152, 18, 0, 0.78)',
+        fillColor: 'rgba(196, 0, 0, 0.54)'
+    };
+      
+        
+     var flagIcon = L.icon({
+        iconUrl: 'http://www.clipartbest.com/cliparts/7eT/MoL/7eTMoLjin.png',
+        iconSize: [50, 50]
+    };
+                           
+    var dangerCircle = {
+        color: '#000',
+        fillColor: '#000'
+    };
+        
+   );
+        
+    var circleGroup = L.layerGroup();
+        
+    for(var i = 0; i < iguanaZones.length; i++) {
+        
+        var coords = iguanaZones[i].coordinates;
+            console.log(iguanaZones[i]);
+        var radius = iguanaZones[i].properties.size;
+        
+        L.circle(coords, radius).addTo(circleGroup);
+            //console.log(circleGroup);
+            //this console.log caused a whole bunch of info to go everywhere on my java console. 
+    };
+        
+    circleGroup.addTo(map);  
+            
+        var marker = {
+            safeDistance: true
+        };       
+        
+        map.on('click', function(e){
+            
+            if(marker.safeDistance == false) {
+                map.removeLayer(marker)
+            };
+            
+            var clickedPoint = e.latlng;
+            
+            L.marker(clickedPoint);
+                console.log(clickedPoint);
+            
+            marker = L.marker((clickedPoint), {icon: flagIcon}).addTo(map);
+            marker.safeDistance = true;
+            
+        testDistance(clickPoint);   
+            
+        }); 
+        
+       function testDistance(clickPoint) {  
+            
+            circleGroup.eachLayer(function(layer) { 
+                
+                var radius = layer.getRadius();
+                    console.log(radius);
+               
+                var center = layer.getLatLng();
+                    console.log(center);
+                
+                var firstDistance = center.distanceTo(clickPoint);
+                    console.log(firstDistance);
+                
+                var realDistance = (firstDistance - radius);
+                    console.log(realDistance);
+                
+                
+                if(realDistance < 2200) { 
+                    layer.setStyle(highlightCircle);
+                    return marker.safeDistance = false;
+                }                   
+                else if (realDistance > 2200) {
+                    layer.setStyle(defaultCircle);
+                };              
+            });
+       }
+        
+// end map1 code
+        
+    </script>
+    
+</body>
+
+</html>
