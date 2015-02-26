@@ -15,9 +15,10 @@
         body {
             margin: 0;
             padding: 0;
-            background: #ed4343;
+            background: #2d3490;
+            background-image:  url("https://s-media-cache-ak0.pinimg.com/236x/8f/c0/96/8fc096afa99a724dc70a4800e817cf42.jpg");
             font-family: Lato, sans-serif;
-            color: #0D0000;
+            color: #000;
         }
         header {
             padding: 6px 10%;
@@ -25,11 +26,11 @@
         h1 {
             display: inline-block;
             margin-right: 20px;
-            color: #001323;
+            color: #000;
         }
         h2 {
             display: inline-block;
-            color: #001323;
+            color: #000;
         }
         #map {
             width: 80%;
@@ -42,35 +43,27 @@
         }
         p {
             font-size: 1em;
-            color: #001323;
+            color: #000;
         }
         /* Additional style rules go here! */
         
-        .blue {
-            color: #165bb6;
-        }
-        .red {
-            color: #cc0000;
-        }
-        .purple {
-            color: #b6165b; 
-        }
+        
         
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Map Title</h1>
-        <h2>Map Subtitle</h2>
+        <h1>You're King of the World!!</h1>
+        <h2>Just Don't get blown off the Mountain!!</h2>
     </header>
 
     <div id='map'></div>
 
     <footer>
         <p>Map authored by Victoria Anderson</p>
-        <p>Additional information about the data and map goes here.</p>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis urna magna, maximus nec laoreet sit amet, dictum ultricies nibh. Ut id auctor lacus. Nam a dolor et justo luctus luctus. Duis a elit eget risus dictum vehicula id eu elit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Sed sed enim nisl. Vestibulum commodo imperdiet lacus, sed facilisis erat placerat sit amet. Nulla consequat malesuada neque eget aliquet. Integer non convallis nisl, gravida ultrices ex. Fusce nec vestibulum elit. Sed elementum lectus ipsum, vulputate elementum ex laoreet a. Aenean eu ex varius, varius felis vitae, efficitur nulla. Quisque pretium laoreet ante, in sodales dui vehicula at. Mauris eu sem sapien.
+        
+        <p>The darker blue dashed lines indicate chair lifts that are able to get you to the area of each mountain top.
         </p>
     </footer>
 
@@ -423,17 +416,17 @@
   ]
 }
         var point = {
-            color: "red",
-            fillOpacity: 0.6
+            color: "#c3cafa",
+            fillOpacity: 0.9
         };
             
         var line = {
-            color: "blue",
+            color: "#5252de",
             opacity: 8
         };
             
         var polygon = {
-            color: "purple",
+            color: "#315ec3",
             fillOpacity: 0.5
         };     
        
@@ -441,7 +434,7 @@
         var featuresLeaflet = L.geoJson(places, {
                 
             pointToLayer: function(feature, latlng) {
-                console.log(feature.properties.Radius)
+                
                 return L.circle (latlng, feature.properties.Radius); 
             },
             style : function(feature) {
