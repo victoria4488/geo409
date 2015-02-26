@@ -15,7 +15,7 @@
         body {
             margin: 0;
             padding: 0;
-            background: whitesmoke;
+            background: #ed4343;
             font-family: Lato, sans-serif;
             color: #0D0000;
         }
@@ -96,7 +96,15 @@
   "features": [
     {
       "type": "Feature",
-      "properties": {},
+      "properties": {
+        "stroke": "#555",
+        "stroke-width": 1,
+        "stroke-opacity": 1,
+        "fill": "#555555",
+        "fill-opacity": 0.25,
+        "Name": "Mammoth Mountain Ski Resort",
+        "Description": "This place is awesome.",
+      },
       "geometry": {
         "type": "Polygon",
         "coordinates": [
@@ -368,7 +376,8 @@
             "marker-size": "medium",
             "marker-symbol": "",
             "Name": "Mt. Top 1",
-            "Description": "Mountain"},
+            "Description": "Mountain",
+            "Radius": 100},
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -384,7 +393,8 @@
             "marker-size": "medium",
             "marker-symbol": "",
             "Name": "Mt. Top 2",
-            "Description": "Mountain"},
+            "Description": "Mountain",
+            "Radius": 100},
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -400,7 +410,8 @@
             "marker-size": "medium",
             "marker-symbol": "",
             "Name": "Mt. Top 3",
-            "Description": "Mountain"},
+            "Description": "Mountain",
+            "Radius": 100},
       "geometry": {
         "type": "Point",
         "coordinates": [
@@ -411,10 +422,53 @@
     }
   ]
 }
+        var point = {
+            color: "red",
+            fillOpacity: 0.6
+        };
+            
+        var line = {
+            color: "blue",
+            opacity: 8
+        };
+            
+        var polygon = {
+            color: "purple",
+            fillOpacity: 0.5
+        };     
+       
         
-    
+        var featuresLeaflet = L.geoJson(places, {
+                
+            pointToLayer: function(feature, latlng) {
+                console.log(feature.properties.Radius)
+                return L.circle (latlng, feature.properties.Radius); 
+            },
+            style : function(feature) {
+            return { dashArray: "10, 4",
+                    weight: 3    
+                }
+            },
+                
+            onEachFeature: function(feature, layer) {
+                if (feature.geometry.type == "Point") {
+                    layer.setStyle(point);
+                    layer.bindPopup("<b>"+feature.properties.Name+"</b><b>" 
+                                    + "<br>" + feature.properties.Description)
+                 }
+                if (feature.geometry.type == "LineString") {
+                    layer.setStyle(line);
+                }
+                if (feature.geometry.type == "Polygon") {
+                    layer.setStyle(polygon);
+                    layer.bindPopup("<b>"+feature.properties.Name+"</b><b>" 
+                                    + "<br>" + feature.properties.Description)
+                }
+            }
+    }).addTo(map);  
+
         </script>
     
-</body>
+    </body>
 
 </html>
