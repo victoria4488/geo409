@@ -188,14 +188,13 @@
      var flagIcon = L.icon({
         iconUrl: 'http://www.clipartbest.com/cliparts/7eT/MoL/7eTMoLjin.png',
         iconSize: [50, 50]
-    };
+    });
                            
     var dangerCircle = {
         color: '#000',
         fillColor: '#000'
     };
         
-   );
         
     var circleGroup = L.layerGroup();
         
@@ -252,7 +251,7 @@
                 
                 
                 if(realDistance < 2200) { 
-                    layer.setStyle(highlightCircle);
+                    layer.setStyle(dangerCircle);
                     return marker.safeDistance = false;
                 }                   
                 else if (realDistance > 2200) {
